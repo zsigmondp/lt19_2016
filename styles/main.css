@@ -945,6 +945,7 @@ input[type="password"] {
   .btn-del, .btn-add, .btn-edit {
     display: inline;
   }
+}
 
 @media (max-width: 40em) {
   #header_large {
