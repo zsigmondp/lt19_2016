@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.5/iframeResizer.contentWindow.min.js"></script>
+  <script type="text/javascript" src="scripts/modal-bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="app-page">
+  <div class="content-wrap">
+    <div class="form-header">
+  		<img src="../images/lt19.svg">
+  	</div>
+    <h1 class="center">NEVEZÉS</h1>
+		<h3 class="alert-message white bg-red center" id="hiba">Az űrlapon vannak még HIBÁK, így nem zárható le, kérjük javítsd!</h3>
+		<form name="urlap" action="urlap_uj.php" method="POST">
+			<input type="hidden" name="id" value="0">
+			<h2 class="center">PÁLYAMŰ ADATAI</h2>
+			<div class="form-float">
+			  <label for="app-cim">A pályamű címe:</label>
+			  <input id="app-cim" type="text" name="cim" value="">
+			  <label for="app-ev">Készítés éve:</label>
+			  <input id="app-ev" type="text" name="ev" maxlength="4" value="">
+			</div>
+			<fieldset>
+				<legend><strong>A pályázatot</strong></legend>
+				<input id="app-egyedul" type="radio" name="csapat" value="1" onchange="csapatletszam()">
+				<label for="app-egyedul"> egyedül készítettem</label><br>
+				<input id="app-csapatban" type="radio" name="csapat" value="2" onchange="csapatletszam()">
+				<label for="app-csapatban"> barátaimmal együtt készítettük, a csapat velem együtt
+					<select name="letszam" onchange="csapatletszam()" >
+						<option value="1">-</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+					</select>
+					főből áll.
+        </label>
+			</fieldset>
+			<div id="csapatdiv">
+				<h2 class="center">CSAPAT</h2>
+        <div class="form-float">
+  				<label for="app-csapatnev">A csapat neve:</label>
+  				<input id="app-csapatnev" type="text" name="csapatnev" value="">
+        </div>
+				<fieldset id="csapattagok">
+					<legend>A további csapattagok névsora:</legend>
+					<div class="csapattag">
+						<label class="csapattag_sorszam"><span class="label-text">2. név</span>
+						  <input class="csapattag_nev" type="text" name="tagnev[]" value="">
+            </label>
+						<label><span class="label-text">Nem:</span>
+  						<select class="csapattag_nem" name="tagnem[]">
+  							<option value="0">-- válassz --</option>
+  							<option value="1">fiú</option>
+  							<option value="2">lány</option>
+  						</select>
+            </label>
+						<label><span class="label-text">Születési idő:</span>
+              <div class="flex-container">
+							<select class="csapattag_szulev" name="tagszulev[]">
+								<option value="1997">1997</option>
+								<option value="1998">1998</option>
+								<option value="1999">1999</option>
+								<option value="2000">2000</option>
+								<option value="2001">2001</option>
+								<option value="2002">2002</option>
+								<option value="2003">2003</option>
+								<option value="2004">2004</option>
+								<option value="2005">2005</option>
+								<option value="2006">2006</option>
+								<option value="2007">2007</option>
+								<option value="2008">2008</option>
+								<option value="2009">2009</option>
+								<option value="2010">2010</option>
+								<option value="2011">2011</option>
+								<option value="2012">2012</option>
+								<option value="2013">2013</option>
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+							</select>
+							<select class="csapattag_szulho" name="tagszulho[]">
+								<option value="1">január</option>
+								<option value="2">február</option>
+								<option value="3">március</option>
+								<option value="4">április</option>
+								<option value="5">május</option>
+								<option value="6">június</option>
+								<option value="7">július</option>
+								<option value="8">augusztus</option>
+								<option value="9">szeptember</option>
+								<option value="10">október</option>
+								<option value="11">november</option>
+								<option value="12">december</option>
+							</select>
+							<select class="csapattag_szulnap" name="tagszulnap[]">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+								<option value="21">21</option>
+								<option value="22">22</option>
+								<option value="23">23</option>
+								<option value="24">24</option>
+								<option value="25">25</option>
+								<option value="26">26</option>
+								<option value="27">27</option>
+								<option value="28">28</option>
+								<option value="29">29</option>
+								<option value="30">30</option>
+								<option value="31">31</option>
+							</select>
+            </div>
+            </label>
+						<label><span class="label-text">pólóméret:</span>
+  						<select class="csapattag_polo" name="tagpolo[]">
+  							<option value="1">S</option>
+  							<option value="2">M</option>
+  							<option value="3">L</option>
+  							<option value="4">XL</option>
+  						</select>
+            </label>
+						<br>
+					</div>
+				</fieldset>
+			</div>
+			<fieldset>
+				<legend>Leginkább melyik típusba sorolnád be a munkádat?</legend>
+				<select name="tipus">
+					<option value="1">animáció/videó</option>
+					<option value="2">rajz/grafika/digitális képfeldolgozás</option>
+					<option value="3">hang/zene</option>
+					<option value="4">játék/játék kiegészítés, saját pálya</option>
+					<option value="5">saját fejlesztésű program</option>
+					<option value="6">saját fejlesztésű kiegészítő, segédprogram (plugin, codec, skin stb.)</option>
+					<option value="7">mobilkommunikációs alkalmazás</option>
+					<option value="8">weblap/webes alkalmazás</option>
+					<option value="9">hardware/robot</option>
+				</select>
+			</fieldset>
+					<label for="app-leiras">Röviden, címszavakban mutasd be a pályaművedet</label>
+					<textarea id="app-leiras" wrap="virtual" cols="60" rows="8" name="leiras"></textarea>
+					<h2 class="center">TECHNIKAI KÖVETELMÉNYEK</h2>
+					<label for="app-os">Milyen operációs rendszeren állítottad elő munkádat?</label>
+					<input id="app-os" type="text" name="os" value=""><br>
+					<label>Van-e szükség a beadott munkád futtatásához speciális hardware/software környezetre?</label>
+						<input id="spec_nem" type="radio" name="specialis" value="0" checked="checked">
+						<label for="spec_nem"> nem</label>
+						<input id="spec_igen" type="radio" name="specialis" value="1">
+						<label for="spec_igen">igen, éspedig:
+					<textarea wrap="virtual" cols="60" rows="8" name="kornyezet"></textarea></label>
+					<fieldset class="form-adat">
+					  <legend>Milyen módon adod be a munkádat?</legend>
+						<label for="adat_url">
+              <input id="adat_url" type="radio" name="adathordozo" value="4">online (URL):
+						  <input type="text" name="url" value="">
+            </label><br>
+						<label for="adat_fizikai">
+              <input id="adat_fizikai" type="radio" name="adathordozo" value="1">CD-ROM/DVD/Pendrive
+            </label>
+						<label for="adat_hrdwr">
+              <input id="adat_hrdwr" type="radio" name="adathordozo" value="2">
+						hardware (postai úton)
+            </label>
+						<label for="adat_feltoltes">
+              <input id="adat_feltoltes" type="radio" name="adathordozo" value="3">verseny.c3.hu feltöltés
+            </label>
+					</fieldset>
+				</form>
+				<div id="upload">
+					<h2 class="center">FELTÖLTÖTT FÁJLOK</h2>
+					<table class="table" id="fajl_tabla">
+						<tbody>
+              <tr class="row center">
+  							<td class="cell dotted-cell width-55"><strong>Fájl név</strong></td>
+  							<td class="cell dotted-cell width-10"><strong>Méret</strong></td>
+  							<td class="cell dotted-cell width-15"><strong>Feltöltés dátuma</strong></td>
+  							<td class="cell dotted-cell width-10 noborder_r"><strong>Törlés / Feltöltés</strong></td>
+  						</tr>
+              <tr class="row center">
+                <td class="cell dotted-cell">asdfd.mp4</td>
+                <td class="cell dotted-cell">45 MB</td>
+                <td class="cell dotted-cell">2016.08.15.</td>
+                <td class="cell dotted-cell">
+                  <a class="btn-del red" href="#">
+                    <i class="fa fa-minus-circle fa-2x" aria-hidden="true"></i>
+                  </a>
+                  <a class="btn-add green" href="javascript:;" onclick="selectFile();">
+                    <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+                  </a>
+                </td>
+              </tr>
+              <tr class="row center">
+                <td class="cell dotted-cell">jgfdjgfdsjg.mp4</td>
+                <td class="cell dotted-cell">4 MB</td>
+                <td class="cell dotted-cell">2016.08.15.</td>
+                <td class="cell dotted-cell">
+                  <a class="btn-del red" href="#">
+                    <i class="fa fa-minus-circle fa-2x" aria-hidden="true"></i>
+                  </a>
+                  <a class="btn-add green" href="javascript:;" onclick="selectFile();">
+                    <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+                  </a>
+                </td>
+              </tr>
+
+					  </tbody>
+          </table>
+					<h4 class="alert-message center white bg-red" id="feltoltes">A "verseny.c3.hu feltöltés" opciót választottad, de nem töltöttél még fel fájlt.</h4>
+					<div class="progress" id="progressbar_div">
+						<div id="upload_progess" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+							<span class="sr-only">40%</span>
+						</div>
+					</div>
+					<input type="file" id="upFile" name="file" style="width:0px;height:0px;visibility:hidden;">
+				</div>
+				<h3 class="alert-message white bg-red center" id="hiba_bottom">Az űrlapon vannak még HIBÁK, így nem zárható le, kérjük javítsd!</h3>
+        <p>
+          <input id="app-hiba" value="hiba" type="button">
+        </div>
+				<p class="center" id="button_div">
+
+					<input id="bezar" class="btn bg-red float-left" value="BEZÁR (MENTÉS NÉLKÜL)" type="button">
+					<input id="eltesz" class="btn bg-green" value="ELTESZEM KÉSŐBBRE" type="button">
+					<input id="lezar" class="btn bg-blue float-right" value="LEZÁROM" type="button">
+				</p>
+			</div>
+  <script type="text/javascript">
+    $("#bezar").click(function() {
+      window.parent.forceClose = true;
+      window.parent.$('#application').modal('hide');
+    });
+    $("#app-hiba").click(function() {
+      $("#app-cim, #app-ev, #app-os, #app-csapatnev, textarea, fieldset").toggleClass("input-alert");
+      $(".alert-message").toggle();
+    });
+    /*$("input[type=text], input[type=password], textarea, fieldset").focus(function () {
+      $(this).removeClass("input-alert");
+    });*/
+
+    $("[name=csapat]").click(function(){
+      if ($(this).val() == 2) {
+        $("#csapatdiv").show('slow');
+      } else {
+        $("#csapatdiv").hide();
+      }
+    });
+    $("[name=adathordozo]").click(function(){
+      if ($(this).val() == 3) {
+        $("#upload").show('slow');
+      } else {
+        $("#upload").hide();
+      }
+    });
+  </script>
+</body>
+</html>

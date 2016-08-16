@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Regisztráció - &lt;19 Szabadfogású Számítógép Verseny</title>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.5/iframeResizer.contentWindow.min.js"></script>
+  <script type="text/javascript" src="scripts/modal-bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="reg-page">
+  <div class="form-header">
+		<img src="../images/lt19.svg">
+	</div>
+  <form name="regform" action="reg.php" method="post">
+		<h1 class="center">REGISZTRÁCIÓ</h1>
+    <div class="form-float reg-form">
+  		<label for="reg-teljesnev">teljes név</label>
+  		<input id="reg-teljesnev" name="teljesnev" type="text">
+  		<label for="reg-nev">kívánt felhasználói név</label>
+  		<input id="reg-nev" name="nev" type="text">
+  		<label for="reg-email">e-mail cím</label>
+  		<input id="reg-email" name="email" type="text">
+  		<label for="reg-elet">életkor</label>
+  		<input id="reg-elet" name="elet" type="text">
+  		<label for="reg-jelszo">jelszó</label>
+  		<input id="reg-jelszo" type="password" name="jelszo">
+  		<label for="reg-jelszo2">jelszó még egyszer</label>
+  		<input id="reg-jelszo2" type="password" name="jelszo2">
+			<input id="reg-indul"  type="checkbox" value="checkbox" name="szeret">
+			<label class="no-float" for="reg-indul"> szeretnék indulni a versenyen</label><br>
+			<input id="reg-ertesites" type="checkbox" value="checkbox" name="kerek">
+			<label class="no-float" for="reg-ertesites"> e-mailben kérek értesítést a versenyhez kapcsolódó eseményekről</label>
+		<br>
+    </div>
+    <div class="alert-message red">
+      <h2 class="center white bg-red"><strong>Valamilyen adatot hibásan adtál meg,<br> kérjük javítsd!</strong><br></h2>
+      <p><strong>A név első karaktere csak betű lehet, ékezet nélküli kisbetű, szám, kötőjel, pont és aláhúzás szerepelhet benne, és legalább 3 betűsnek kell lennie!</strong></p>
+  		<p><strong>A megadott e-mail cím érvénytelen!</strong></p>
+  		<p><strong>Az életkor érvénytelen!</strong></p>
+  		<p><strong>Érvenytelen karakterek a jelszóban, a jelszó túl rövid vagy a két jelszómező tartalma nem egyezik meg!</strong></p>
+    </div>
+    <p class="center"><input id="reg-hiba" value="hiba" type="button"></p>
+		<p class="center"><input id="mehet" class="btn bg-green" value="OK, MEHET" type="submit"></p>
+		<p class="center"><button id="vissza" class="btn bg-blue" type="button">VISSZA</button></p>
+	</form>
+  <script type="text/javascript">
+      $("#vissza").click(function() {
+        window.parent.forceClose = true;
+        window.parent.$('#registration').modal('hide');
+      });
+      $("#reg-hiba").click(function() {
+        $("input[type=text], input[type=password]").toggleClass("input-alert");
+        $(".alert-message").toggle();
+      });
+  </script>
+</body>
+</html>
