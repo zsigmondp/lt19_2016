@@ -529,10 +529,16 @@ input[type="password"] {
   opacity: 0.95;
 */
 }
+
 .logo {
-  display: inline-block;
-  width: 6em;
-  margin: 0 1em;
+    display: inline-block;
+    width: 5em;
+    margin-right: 1.1em;
+    vertical-align: middle;
+}
+
+.logo:last-of-type {
+    margin-right: 0;
 }
 
 .logo img {

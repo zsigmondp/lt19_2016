@@ -170,6 +170,9 @@ $("#header").click(function(){
     $(".page").hide();
     $("#container").show();
     $("#footer").show();
+    TweenMax.to($("#info-navigation"), 0.5, {
+      opacity: 1
+    });
     backFromHole(clicked, null);
     showMenu();
   }
@@ -287,6 +290,48 @@ $("#to-content").click(function() {
   fallInHole("cube");
   clicked = "cube";
 });
+
+function contentView () {
+  $("#mask").hide();
+  $("#ltlogo").hide();
+  $("#header_logo").show();
+}
+
+if (document.location.hash) {
+	var hash = window.location.hash.substring(1);
+  switch (hash) {
+    case 'verseny':
+      contentView();
+      fallInHole("cube");
+      clicked = "cube";
+      break;
+    case 'nevezes':
+      contentView();
+      fallInHole("cylinder");
+      clicked = "cylinder";
+      break;
+    case 'bemutatok':
+      contentView();
+      fallInHole("triangle");
+      clicked = "triangle";
+      break;
+    case 'gyik':
+      contentView();
+      fallInHole("pentagon");
+      clicked = "pentagon";
+      break;
+    case 'korabbi':
+      contentView();
+      fallInHole("star");
+      clicked = "star";
+      break;
+    case 'partnerek':
+      contentView();
+      fallInHole("cross");
+      clicked = "cross";
+      break;
+  }
+}
 
 Draggable.create(droppables, {
   bounds: window,
